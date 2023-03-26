@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  mysql:
-    container_name: mysql
-    image: mysql:8.0
-    restart: unless-stopped
-    environment:
-      - MYSQL_ROOT_PASSWORD=$DOCKER_MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$DOCKER_MYSQLDB_DATABASE
-    ports:
-      - $DOCKER_MYSQLDB_PORT_LOCAL:$DOCKER_MYSQLDB_PORT_CONTAINER
-    volumes:
-      - db:/var/lib/mysql
   redis:
     container_name: redis
     image: 'redis:7.0-alpine'
@@ -24,8 +13,6 @@ services:
       - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
     environment:
       - REDIS_REPLICATION_MODE=master
-    depends_on:
-      - mysql
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     container_name: 'rabbitmq'
@@ -42,5 +29,4 @@ networks:
   rabbitmq_nodejs:
     driver: bridge
 volumes:
-  db:
   queue:
