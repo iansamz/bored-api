@@ -19,9 +19,9 @@ type Mutation {
 	"Creates a new Technology"
 	createTechnology(input: CreateTechnology!): Technology!
 	"Removes a Technology"
-	deleteTechnology(id: ID!): Boolean
+	deleteTechnology(id: String!): Boolean
 	"Updates a Technology"
-	updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
+	updateTechnology(id: String!, input: UpdateTechnology!): Technology!
 }
 
 """
@@ -31,7 +31,7 @@ type Query {
 	"Returns a list of Technologies"
 	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
 	"Returns a single Technology by ID"
-	technology(id: ID!): Technology
+	technology(id: String!): Technology
 }
 
 """
@@ -43,7 +43,7 @@ type Technology {
 	"The name of the Technology"
 	displayName: String!
 	"The ID of the Technology"
-	id: ID!
+	id: String!
 	"The link to the Technology's documentation"
 	url: String
 }

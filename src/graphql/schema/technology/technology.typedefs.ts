@@ -6,7 +6,7 @@ export const technologyTypeDefs = gql`
 	"""
 	type Technology {
 		"The ID of the Technology"
-		id: ID!
+		id: String!
 		"The name of the Technology"
 		displayName: String!
 		"A brief description of the Technology"
@@ -30,7 +30,7 @@ export const technologyTypeDefs = gql`
 	"""
 	type Query {
 		"Returns a single Technology by ID"
-		technology(id: ID!): Technology
+		technology(id: String!): Technology
 		"Returns a list of Technologies"
 		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
 	}
@@ -60,8 +60,8 @@ export const technologyTypeDefs = gql`
 		"Creates a new Technology"
 		createTechnology(input: CreateTechnology!): Technology!
 		"Updates a Technology"
-		updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
+		updateTechnology(id: String!, input: UpdateTechnology!): Technology!
 		"Removes a Technology"
-		deleteTechnology(id: ID!): Boolean
+		deleteTechnology(id: String!): Boolean
 	}
 `;

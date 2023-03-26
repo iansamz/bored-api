@@ -4,19 +4,6 @@ import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { GraphQLError } from 'graphql';
 import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
 
-const parseTechnologyId = (id: string): number => {
-	const idNumber = Number(id);
-	if (isNaN(idNumber)) {
-		throw new GraphQLError(`Invalid argument value`, {
-			extensions: {
-				code: ApolloServerErrorCode.BAD_USER_INPUT,
-				argumentName: 'id',
-			},
-		});
-	}
-	return idNumber;
-};
-
 type ExcludeNullProp<T extends Record<string, unknown>, TKey extends keyof T> = {
 	[Key in keyof T]: Key extends TKey ? Exclude<T[Key], null> : T[Key];
 };
@@ -24,8 +11,7 @@ type ExcludeNullProp<T extends Record<string, unknown>, TKey extends keyof T> = 
 export const technologyResolvers: Resolvers<ServerContext> = {
 	Query: {
 		technology: async (_parent, { id }, { dataSources: { technologyDataSource } }) => {
-			const idNumber = parseTechnologyId(id);
-			const entity = await technologyDataSource.getTechnologyById(idNumber);
+			const entity = await technologyDataSource.getTechnologyById(id);
 			if (!entity) {
 				throw new GraphQLError('Technology not found.', {
 					extensions: {
@@ -46,7 +32,6 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			return mapTechnology(entity);
 		},
 		updateTechnology: async (_parent, { id, input }, { dataSources }) => {
-			const idNumber = parseTechnologyId(id);
 			if (input.displayName === null) {
 				throw new GraphQLError(`Invalid argument property value. Display Name cannot be null.`, {
 					extensions: {
@@ -58,12 +43,11 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 				});
 			}
 			const validated = input as ExcludeNullProp<UpdateTechnology, 'displayName'>;
-			const entity = await dataSources.technologyDataSource.updateTechnology(idNumber, validated);
+			const entity = await dataSources.technologyDataSource.updateTechnology(id, validated);
 			return mapTechnology(entity);
 		},
 		deleteTechnology: async (_parent, { id }, { dataSources }) => {
-			const idNumber = parseTechnologyId(id);
-			const entity = await dataSources.technologyDataSource.deleteTechnology(idNumber);
+			const entity = await dataSources.technologyDataSource.deleteTechnology(id);
 			return Boolean(entity);
 		},
 	},

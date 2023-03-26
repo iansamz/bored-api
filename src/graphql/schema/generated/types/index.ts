@@ -41,12 +41,12 @@ export type MutationcreateTechnologyArgs = {
 
 /** Technology mutations */
 export type MutationdeleteTechnologyArgs = {
-	id: Scalars['ID'];
+	id: Scalars['String'];
 };
 
 /** Technology mutations */
 export type MutationupdateTechnologyArgs = {
-	id: Scalars['ID'];
+	id: Scalars['String'];
 	input: UpdateTechnology;
 };
 
@@ -67,7 +67,7 @@ export type QuerytechnologiesArgs = {
 
 /** Technology queries */
 export type QuerytechnologyArgs = {
-	id: Scalars['ID'];
+	id: Scalars['String'];
 };
 
 /** Technology object */
@@ -78,7 +78,7 @@ export type Technology = {
 	/** The name of the Technology */
 	displayName: Scalars['String'];
 	/** The ID of the Technology */
-	id: Scalars['ID'];
+	id: Scalars['String'];
 	/** The link to the Technology's documentation */
 	url?: Maybe<Scalars['String']>;
 };
@@ -187,7 +187,6 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	CreateTechnology: CreateTechnology;
-	ID: ResolverTypeWrapper<Scalars['ID']>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
@@ -201,7 +200,6 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
 	Boolean: Scalars['Boolean'];
 	CreateTechnology: CreateTechnology;
-	ID: Scalars['ID'];
 	Int: Scalars['Int'];
 	Mutation: {};
 	Query: {};
@@ -259,7 +257,7 @@ export type TechnologyResolvers<
 > = {
 	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-	id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+	id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
