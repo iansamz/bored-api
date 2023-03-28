@@ -17,8 +17,12 @@ export const activityResolvers: Resolvers<ServerContext> = {
 			}
 			return mapActivity(entity);
 		},
-		activities: async (_parent, { limit, offset }, { dataSources: { activityDataSource } }) => {
-			const collectionPage = await activityDataSource.getActivities(limit, offset);
+		activities: async (
+			_parent,
+			{ limit, offset, query },
+			{ dataSources: { activityDataSource } }
+		) => {
+			const collectionPage = await activityDataSource.getActivities(limit, offset, query);
 			return mapActivityCollectionPage(collectionPage);
 		},
 	},

@@ -61,6 +61,23 @@ export type CreateActivity = {
 	type: Scalars['String'];
 };
 
+export type GetActivities = {
+	/** The accesibility of the Activity */
+	accessibility?: InputMaybe<Scalars['Float']>;
+	/** The name of the Activity */
+	activity?: InputMaybe<Scalars['String']>;
+	/** The key of the Activity */
+	key?: InputMaybe<Scalars['String']>;
+	/** The link of the Activity */
+	link?: InputMaybe<Scalars['String']>;
+	/** The participants of the Activity */
+	participants?: InputMaybe<Scalars['Int']>;
+	/** The price of the Activity */
+	price?: InputMaybe<Scalars['Float']>;
+	/** The type of the Activity */
+	type?: InputMaybe<Scalars['String']>;
+};
+
 /** Activity mutations */
 export type Mutation = {
 	__typename?: 'Mutation';
@@ -108,6 +125,7 @@ export type Query = {
 export type QueryactivitiesArgs = {
 	limit?: InputMaybe<Scalars['Int']>;
 	offset?: InputMaybe<Scalars['Int']>;
+	query?: InputMaybe<GetActivities>;
 };
 
 /** Activity queries */
@@ -221,6 +239,7 @@ export type ResolversTypes = {
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	CreateActivity: CreateActivity;
 	Float: ResolverTypeWrapper<Scalars['Float']>;
+	GetActivities: GetActivities;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
@@ -235,6 +254,7 @@ export type ResolversParentTypes = {
 	Boolean: Scalars['Boolean'];
 	CreateActivity: CreateActivity;
 	Float: Scalars['Float'];
+	GetActivities: GetActivities;
 	Int: Scalars['Int'];
 	Mutation: {};
 	Query: {};

@@ -52,6 +52,23 @@ input CreateActivity {
 	type: String!
 }
 
+input GetActivities {
+	"The accesibility of the Activity"
+	accessibility: Float
+	"The name of the Activity"
+	activity: String
+	"The key of the Activity"
+	key: String
+	"The link of the Activity"
+	link: String
+	"The participants of the Activity"
+	participants: Int
+	"The price of the Activity"
+	price: Float
+	"The type of the Activity"
+	type: String
+}
+
 """
 Activity mutations
 """
@@ -71,7 +88,7 @@ Activity queries
 """
 type Query {
 	"Returns a list of Technologies"
-	activities(limit: Int = 5, offset: Int = 0): ActivityCollectionPage!
+	activities(limit: Int = 5, offset: Int = 0, query: GetActivities): ActivityCollectionPage!
 	"Returns a single Activity by ID"
 	activity(id: String!): Activity
 }

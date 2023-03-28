@@ -1,6 +1,6 @@
 import { PrismaClient, Prisma, ActivityEntity } from '@prisma/client';
 import { CacheAPIWrapper } from '../../cache';
-import { Activity } from '../schema/generated/types';
+import { GetActivities, InputMaybe } from '../schema/generated/types';
 import axios from 'axios';
 
 type ActivityEntityId = ActivityEntity['id'];
@@ -32,10 +32,47 @@ export class ActivityDataSource {
 		return entity;
 	}
 
-	async getActivities(limit: number, offset: number): Promise<ActivityEntityCollectionPage> {
+	async getActivities(
+		limit: number,
+		offset: number,
+		query?: InputMaybe<GetActivities> | undefined
+	): Promise<ActivityEntityCollectionPage> {
+		const whereClause: Prisma.ActivityEntityWhereInput = {};
+
+		if (query?.type) {
+			whereClause.type = query.type;
+		}
+
+		if (query?.activity) {
+			whereClause.activity = query.activity;
+		}
+
+		if (query?.participants) {
+			whereClause.participants = query.participants;
+		}
+
+		if (query?.price) {
+			whereClause.price = query.price;
+		}
+
+		if (query?.link) {
+			whereClause.link = query.link;
+		}
+
+		if (query?.key) {
+			whereClause.key = query.key;
+		}
+
+		if (query?.accessibility) {
+			whereClause.accessibility = query.accessibility;
+		}
+
+		console.log(whereClause);
+
 		const [totalCount, items] = await this.prismaClient.$transaction([
 			this.prismaClient.activityEntity.count(),
 			this.prismaClient.activityEntity.findMany({
+				where: whereClause,
 				take: limit,
 				skip: offset,
 			}),

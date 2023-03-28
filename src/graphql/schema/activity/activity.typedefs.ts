@@ -33,6 +33,23 @@ export const activityTypeDefs = gql`
 		items: [Activity]!
 	}
 
+	input GetActivities {
+		"The name of the Activity"
+		activity: String
+		"The type of the Activity"
+		type: String
+		"The participants of the Activity"
+		participants: Int
+		"The price of the Activity"
+		price: Float
+		"The link of the Activity"
+		link: String
+		"The key of the Activity"
+		key: String
+		"The accesibility of the Activity"
+		accessibility: Float
+	}
+
 	"""
 	Activity queries
 	"""
@@ -40,7 +57,7 @@ export const activityTypeDefs = gql`
 		"Returns a single Activity by ID"
 		activity(id: String!): Activity
 		"Returns a list of Technologies"
-		activities(limit: Int = 5, offset: Int = 0): ActivityCollectionPage!
+		activities(limit: Int = 5, offset: Int = 0, query: GetActivities): ActivityCollectionPage!
 	}
 
 	input CreateActivity {
