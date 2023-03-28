@@ -32,18 +32,7 @@ export const activityResolvers: Resolvers<ServerContext> = {
 			return mapActivity(entity);
 		},
 		updateActivity: async (_parent, { id, input }, { dataSources }) => {
-			if (input.activity === null) {
-				throw new GraphQLError(`Invalid argument property value. Activity cannot be null.`, {
-					extensions: {
-						code: ApolloServerErrorCode.BAD_USER_INPUT,
-						argumentName: 'input',
-						propertyName: 'activity',
-						propertyValue: input.activity,
-					},
-				});
-			}
-			const validated = input as ExcludeNullProp<UpdateActivity, 'activity'>;
-			const entity = await dataSources.activityDataSource.updateActivity(id, validated);
+			const entity = await dataSources.activityDataSource.updateActivity(id, input);
 			return mapActivity(entity);
 		},
 		deleteActivity: async (_parent, { id }, { dataSources }) => {
