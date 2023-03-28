@@ -67,8 +67,6 @@ export class ActivityDataSource {
 			whereClause.accessibility = query.accessibility;
 		}
 
-		console.log(whereClause);
-
 		const [totalCount, items] = await this.prismaClient.$transaction([
 			this.prismaClient.activityEntity.count(),
 			this.prismaClient.activityEntity.findMany({
