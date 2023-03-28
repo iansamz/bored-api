@@ -1,12 +1,8 @@
 import { ServerContext } from '../../server-context/server-context';
-import { Resolvers, UpdateActivity } from '../generated/types';
+import { Resolvers } from '../generated/types';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { GraphQLError } from 'graphql';
 import { mapActivity, mapActivityCollectionPage } from '../../mappers';
-
-type ExcludeNullProp<T extends Record<string, unknown>, TKey extends keyof T> = {
-	[Key in keyof T]: Key extends TKey ? Exclude<T[Key], null> : T[Key];
-};
 
 export const activityResolvers: Resolvers<ServerContext> = {
 	Query: {
