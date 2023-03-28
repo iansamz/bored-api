@@ -2,10 +2,10 @@ import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { GraphQLSchema } from 'graphql';
 
-import { technologyResolvers, technologyTypeDefs } from './technology';
+import { activityResolvers, activityTypeDefs } from './activity';
 
-const typeDefs = mergeTypeDefs([technologyTypeDefs]);
+const typeDefs = mergeTypeDefs([activityTypeDefs]);
 
-const resolvers = mergeResolvers([technologyResolvers]);
+const resolvers = mergeResolvers([activityResolvers]);
 
 export const schema: GraphQLSchema = makeExecutableSchema({ typeDefs, resolvers });

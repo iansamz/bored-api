@@ -10,11 +10,15 @@ datasource db {
   url      = env("MONGODB_CONNECTION_URL")
 }
 
-model TechnologyEntity {
-  description String?
-  displayName String  @unique
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  url         String?
+model ActivityEntity {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  activity      String
+  type          String
+  participants  String
+  price         String
+  link          String?
+  key           String
+  accessibility String
 
-  @@map("technology")
+  @@map("activity")
 }

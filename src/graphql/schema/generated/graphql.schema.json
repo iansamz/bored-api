@@ -9,6 +9,188 @@
 		"subscriptionType": null,
 		"types": [
 			{
+				"kind": "OBJECT",
+				"name": "Activity",
+				"description": "Activity object",
+				"fields": [
+					{
+						"name": "accessibility",
+						"description": "The accesibility of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "activity",
+						"description": "The name of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "id",
+						"description": "The ID of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "key",
+						"description": "The key of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "link",
+						"description": "The link of the Activity",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "participants",
+						"description": "The participants of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "price",
+						"description": "The price of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "type",
+						"description": "The type of the Activity",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ActivityCollectionPage",
+				"description": "A page of activity items",
+				"fields": [
+					{
+						"name": "items",
+						"description": "A list of records of the requested page",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Activity",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "totalCount",
+						"description": "Identifies the total count of activity records in data source",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
 				"kind": "SCALAR",
 				"name": "Boolean",
 				"description": "The `Boolean` scalar type represents `true` or `false`.",
@@ -20,25 +202,13 @@
 			},
 			{
 				"kind": "INPUT_OBJECT",
-				"name": "CreateTechnology",
+				"name": "CreateActivity",
 				"description": null,
 				"fields": null,
 				"inputFields": [
 					{
-						"name": "description",
-						"description": "A brief description of the Technology",
-						"type": {
-							"kind": "SCALAR",
-							"name": "String",
-							"ofType": null
-						},
-						"defaultValue": null,
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "displayName",
-						"description": "Technology Name",
+						"name": "accessibility",
+						"description": "The accesibility of the Activity",
 						"type": {
 							"kind": "NON_NULL",
 							"name": null,
@@ -53,12 +223,92 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "url",
-						"description": "The link to the Technology's documentation",
+						"name": "activity",
+						"description": "The name of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "key",
+						"description": "The key of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "link",
+						"description": "The link of the Activity",
 						"type": {
 							"kind": "SCALAR",
 							"name": "String",
 							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "participants",
+						"description": "The participants of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "price",
+						"description": "The price of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "type",
+						"description": "The type of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
 						},
 						"defaultValue": null,
 						"isDeprecated": false,
@@ -82,11 +332,11 @@
 			{
 				"kind": "OBJECT",
 				"name": "Mutation",
-				"description": "Technology mutations",
+				"description": "Activity mutations",
 				"fields": [
 					{
-						"name": "createTechnology",
-						"description": "Creates a new Technology",
+						"name": "createActivity",
+						"description": "Creates a new Activity",
 						"args": [
 							{
 								"name": "input",
@@ -96,7 +346,7 @@
 									"name": null,
 									"ofType": {
 										"kind": "INPUT_OBJECT",
-										"name": "CreateTechnology",
+										"name": "CreateActivity",
 										"ofType": null
 									}
 								},
@@ -110,7 +360,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "Technology",
+								"name": "Activity",
 								"ofType": null
 							}
 						},
@@ -118,8 +368,8 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "deleteTechnology",
-						"description": "Removes a Technology",
+						"name": "deleteActivity",
+						"description": "Removes a Activity",
 						"args": [
 							{
 								"name": "id",
@@ -147,8 +397,8 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "updateTechnology",
-						"description": "Updates a Technology",
+						"name": "updateActivity",
+						"description": "Updates a Activity",
 						"args": [
 							{
 								"name": "id",
@@ -174,7 +424,7 @@
 									"name": null,
 									"ofType": {
 										"kind": "INPUT_OBJECT",
-										"name": "UpdateTechnology",
+										"name": "UpdateActivity",
 										"ofType": null
 									}
 								},
@@ -188,7 +438,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "Technology",
+								"name": "Activity",
 								"ofType": null
 							}
 						},
@@ -204,10 +454,10 @@
 			{
 				"kind": "OBJECT",
 				"name": "Query",
-				"description": "Technology queries",
+				"description": "Activity queries",
 				"fields": [
 					{
-						"name": "technologies",
+						"name": "activities",
 						"description": "Returns a list of Technologies",
 						"args": [
 							{
@@ -240,7 +490,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "TechnologyCollectionPage",
+								"name": "ActivityCollectionPage",
 								"ofType": null
 							}
 						},
@@ -248,8 +498,8 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "technology",
-						"description": "Returns a single Technology by ID",
+						"name": "activity",
+						"description": "Returns a single Activity by ID",
 						"args": [
 							{
 								"name": "id",
@@ -270,7 +520,7 @@
 						],
 						"type": {
 							"kind": "OBJECT",
-							"name": "Technology",
+							"name": "Activity",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -293,128 +543,62 @@
 				"possibleTypes": null
 			},
 			{
-				"kind": "OBJECT",
-				"name": "Technology",
-				"description": "Technology object",
-				"fields": [
-					{
-						"name": "description",
-						"description": "A brief description of the Technology",
-						"args": [],
-						"type": {
-							"kind": "SCALAR",
-							"name": "String",
-							"ofType": null
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "displayName",
-						"description": "The name of the Technology",
-						"args": [],
-						"type": {
-							"kind": "NON_NULL",
-							"name": null,
-							"ofType": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							}
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "id",
-						"description": "The ID of the Technology",
-						"args": [],
-						"type": {
-							"kind": "NON_NULL",
-							"name": null,
-							"ofType": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							}
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "url",
-						"description": "The link to the Technology's documentation",
-						"args": [],
-						"type": {
-							"kind": "SCALAR",
-							"name": "String",
-							"ofType": null
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					}
-				],
-				"inputFields": null,
-				"interfaces": [],
-				"enumValues": null,
-				"possibleTypes": null
-			},
-			{
-				"kind": "OBJECT",
-				"name": "TechnologyCollectionPage",
-				"description": "A page of technology items",
-				"fields": [
-					{
-						"name": "items",
-						"description": "A list of records of the requested page",
-						"args": [],
-						"type": {
-							"kind": "NON_NULL",
-							"name": null,
-							"ofType": {
-								"kind": "LIST",
-								"name": null,
-								"ofType": {
-									"kind": "OBJECT",
-									"name": "Technology",
-									"ofType": null
-								}
-							}
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "totalCount",
-						"description": "Identifies the total count of technology records in data source",
-						"args": [],
-						"type": {
-							"kind": "NON_NULL",
-							"name": null,
-							"ofType": {
-								"kind": "SCALAR",
-								"name": "Int",
-								"ofType": null
-							}
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					}
-				],
-				"inputFields": null,
-				"interfaces": [],
-				"enumValues": null,
-				"possibleTypes": null
-			},
-			{
 				"kind": "INPUT_OBJECT",
-				"name": "UpdateTechnology",
+				"name": "UpdateActivity",
 				"description": null,
 				"fields": null,
 				"inputFields": [
 					{
-						"name": "description",
-						"description": "A brief description of the Technology",
+						"name": "accessibility",
+						"description": "The accesibility of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "activity",
+						"description": "The name of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "key",
+						"description": "The key of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "link",
+						"description": "The link of the Activity",
 						"type": {
 							"kind": "SCALAR",
 							"name": "String",
@@ -425,24 +609,48 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "displayName",
-						"description": "Technology Name",
+						"name": "participants",
+						"description": "The participants of the Activity",
 						"type": {
-							"kind": "SCALAR",
-							"name": "String",
-							"ofType": null
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
 						},
 						"defaultValue": null,
 						"isDeprecated": false,
 						"deprecationReason": null
 					},
 					{
-						"name": "url",
-						"description": "The link to the Technology's documentation",
+						"name": "price",
+						"description": "The price of the Activity",
 						"type": {
-							"kind": "SCALAR",
-							"name": "String",
-							"ofType": null
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "type",
+						"description": "The type of the Activity",
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "String",
+								"ofType": null
+							}
 						},
 						"defaultValue": null,
 						"isDeprecated": false,

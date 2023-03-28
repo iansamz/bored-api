@@ -1,1 +1,1 @@
-export * from './technology';
+export * from './activity';

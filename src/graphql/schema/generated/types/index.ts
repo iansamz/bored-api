@@ -14,91 +14,115 @@ export type Scalars = {
 	Float: number;
 };
 
-export type CreateTechnology = {
-	/** A brief description of the Technology */
-	description?: InputMaybe<Scalars['String']>;
-	/** Technology Name */
-	displayName: Scalars['String'];
-	/** The link to the Technology's documentation */
-	url?: InputMaybe<Scalars['String']>;
+/** Activity object */
+export type Activity = {
+	__typename?: 'Activity';
+	/** The accesibility of the Activity */
+	accessibility: Scalars['String'];
+	/** The name of the Activity */
+	activity: Scalars['String'];
+	/** The ID of the Activity */
+	id: Scalars['String'];
+	/** The key of the Activity */
+	key: Scalars['String'];
+	/** The link of the Activity */
+	link?: Maybe<Scalars['String']>;
+	/** The participants of the Activity */
+	participants: Scalars['String'];
+	/** The price of the Activity */
+	price: Scalars['String'];
+	/** The type of the Activity */
+	type: Scalars['String'];
 };
 
-/** Technology mutations */
+/** A page of activity items */
+export type ActivityCollectionPage = {
+	__typename?: 'ActivityCollectionPage';
+	/** A list of records of the requested page */
+	items: Array<Maybe<Activity>>;
+	/** Identifies the total count of activity records in data source */
+	totalCount: Scalars['Int'];
+};
+
+export type CreateActivity = {
+	/** The accesibility of the Activity */
+	accessibility: Scalars['String'];
+	/** The name of the Activity */
+	activity: Scalars['String'];
+	/** The key of the Activity */
+	key: Scalars['String'];
+	/** The link of the Activity */
+	link?: InputMaybe<Scalars['String']>;
+	/** The participants of the Activity */
+	participants: Scalars['String'];
+	/** The price of the Activity */
+	price: Scalars['String'];
+	/** The type of the Activity */
+	type: Scalars['String'];
+};
+
+/** Activity mutations */
 export type Mutation = {
 	__typename?: 'Mutation';
-	/** Creates a new Technology */
-	createTechnology: Technology;
-	/** Removes a Technology */
-	deleteTechnology?: Maybe<Scalars['Boolean']>;
-	/** Updates a Technology */
-	updateTechnology: Technology;
+	/** Creates a new Activity */
+	createActivity: Activity;
+	/** Removes a Activity */
+	deleteActivity?: Maybe<Scalars['Boolean']>;
+	/** Updates a Activity */
+	updateActivity: Activity;
 };
 
-/** Technology mutations */
-export type MutationcreateTechnologyArgs = {
-	input: CreateTechnology;
+/** Activity mutations */
+export type MutationcreateActivityArgs = {
+	input: CreateActivity;
 };
 
-/** Technology mutations */
-export type MutationdeleteTechnologyArgs = {
+/** Activity mutations */
+export type MutationdeleteActivityArgs = {
 	id: Scalars['String'];
 };
 
-/** Technology mutations */
-export type MutationupdateTechnologyArgs = {
+/** Activity mutations */
+export type MutationupdateActivityArgs = {
 	id: Scalars['String'];
-	input: UpdateTechnology;
+	input: UpdateActivity;
 };
 
-/** Technology queries */
+/** Activity queries */
 export type Query = {
 	__typename?: 'Query';
 	/** Returns a list of Technologies */
-	technologies: TechnologyCollectionPage;
-	/** Returns a single Technology by ID */
-	technology?: Maybe<Technology>;
+	activities: ActivityCollectionPage;
+	/** Returns a single Activity by ID */
+	activity?: Maybe<Activity>;
 };
 
-/** Technology queries */
-export type QuerytechnologiesArgs = {
+/** Activity queries */
+export type QueryactivitiesArgs = {
 	limit?: InputMaybe<Scalars['Int']>;
 	offset?: InputMaybe<Scalars['Int']>;
 };
 
-/** Technology queries */
-export type QuerytechnologyArgs = {
+/** Activity queries */
+export type QueryactivityArgs = {
 	id: Scalars['String'];
 };
 
-/** Technology object */
-export type Technology = {
-	__typename?: 'Technology';
-	/** A brief description of the Technology */
-	description?: Maybe<Scalars['String']>;
-	/** The name of the Technology */
-	displayName: Scalars['String'];
-	/** The ID of the Technology */
-	id: Scalars['String'];
-	/** The link to the Technology's documentation */
-	url?: Maybe<Scalars['String']>;
-};
-
-/** A page of technology items */
-export type TechnologyCollectionPage = {
-	__typename?: 'TechnologyCollectionPage';
-	/** A list of records of the requested page */
-	items: Array<Maybe<Technology>>;
-	/** Identifies the total count of technology records in data source */
-	totalCount: Scalars['Int'];
-};
-
-export type UpdateTechnology = {
-	/** A brief description of the Technology */
-	description?: InputMaybe<Scalars['String']>;
-	/** Technology Name */
-	displayName?: InputMaybe<Scalars['String']>;
-	/** The link to the Technology's documentation */
-	url?: InputMaybe<Scalars['String']>;
+export type UpdateActivity = {
+	/** The accesibility of the Activity */
+	accessibility: Scalars['String'];
+	/** The name of the Activity */
+	activity: Scalars['String'];
+	/** The key of the Activity */
+	key: Scalars['String'];
+	/** The link of the Activity */
+	link?: InputMaybe<Scalars['String']>;
+	/** The participants of the Activity */
+	participants: Scalars['String'];
+	/** The price of the Activity */
+	price: Scalars['String'];
+	/** The type of the Activity */
+	type: Scalars['String'];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -185,51 +209,75 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+	Activity: ResolverTypeWrapper<Activity>;
+	ActivityCollectionPage: ResolverTypeWrapper<ActivityCollectionPage>;
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-	CreateTechnology: CreateTechnology;
+	CreateActivity: CreateActivity;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
-	Technology: ResolverTypeWrapper<Technology>;
-	TechnologyCollectionPage: ResolverTypeWrapper<TechnologyCollectionPage>;
-	UpdateTechnology: UpdateTechnology;
+	UpdateActivity: UpdateActivity;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+	Activity: Activity;
+	ActivityCollectionPage: ActivityCollectionPage;
 	Boolean: Scalars['Boolean'];
-	CreateTechnology: CreateTechnology;
+	CreateActivity: CreateActivity;
 	Int: Scalars['Int'];
 	Mutation: {};
 	Query: {};
 	String: Scalars['String'];
-	Technology: Technology;
-	TechnologyCollectionPage: TechnologyCollectionPage;
-	UpdateTechnology: UpdateTechnology;
+	UpdateActivity: UpdateActivity;
+};
+
+export type ActivityResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Activity'] = ResolversParentTypes['Activity']
+> = {
+	accessibility?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	activity?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	link?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	participants?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	price?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type ActivityCollectionPageResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['ActivityCollectionPage'] = ResolversParentTypes['ActivityCollectionPage']
+> = {
+	items?: Resolver<Array<Maybe<ResolversTypes['Activity']>>, ParentType, ContextType>;
+	totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type MutationResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
 > = {
-	createTechnology?: Resolver<
-		ResolversTypes['Technology'],
+	createActivity?: Resolver<
+		ResolversTypes['Activity'],
 		ParentType,
 		ContextType,
-		RequireFields<MutationcreateTechnologyArgs, 'input'>
+		RequireFields<MutationcreateActivityArgs, 'input'>
 	>;
-	deleteTechnology?: Resolver<
+	deleteActivity?: Resolver<
 		Maybe<ResolversTypes['Boolean']>,
 		ParentType,
 		ContextType,
-		RequireFields<MutationdeleteTechnologyArgs, 'id'>
+		RequireFields<MutationdeleteActivityArgs, 'id'>
 	>;
-	updateTechnology?: Resolver<
-		ResolversTypes['Technology'],
+	updateActivity?: Resolver<
+		ResolversTypes['Activity'],
 		ParentType,
 		ContextType,
-		RequireFields<MutationupdateTechnologyArgs, 'id' | 'input'>
+		RequireFields<MutationupdateActivityArgs, 'id' | 'input'>
 	>;
 };
 
@@ -237,43 +285,23 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
-	technologies?: Resolver<
-		ResolversTypes['TechnologyCollectionPage'],
+	activities?: Resolver<
+		ResolversTypes['ActivityCollectionPage'],
 		ParentType,
 		ContextType,
-		RequireFields<QuerytechnologiesArgs, 'limit' | 'offset'>
+		RequireFields<QueryactivitiesArgs, 'limit' | 'offset'>
 	>;
-	technology?: Resolver<
-		Maybe<ResolversTypes['Technology']>,
+	activity?: Resolver<
+		Maybe<ResolversTypes['Activity']>,
 		ParentType,
 		ContextType,
-		RequireFields<QuerytechnologyArgs, 'id'>
+		RequireFields<QueryactivityArgs, 'id'>
 	>;
-};
-
-export type TechnologyResolvers<
-	ContextType = any,
-	ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']
-> = {
-	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-	id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-	url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type TechnologyCollectionPageResolvers<
-	ContextType = any,
-	ParentType extends ResolversParentTypes['TechnologyCollectionPage'] = ResolversParentTypes['TechnologyCollectionPage']
-> = {
-	items?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
-	totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
+	Activity?: ActivityResolvers<ContextType>;
+	ActivityCollectionPage?: ActivityCollectionPageResolvers<ContextType>;
 	Mutation?: MutationResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
-	Technology?: TechnologyResolvers<ContextType>;
-	TechnologyCollectionPage?: TechnologyCollectionPageResolvers<ContextType>;
 };

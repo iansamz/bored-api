@@ -1,8 +1,8 @@
 import { BaseContext } from '@apollo/server';
-import { TechnologyDataSource } from '../data-sources/technology-data-source';
+import { ActivityDataSource } from '../data-sources';
 
 export type ServerContextDataSources = {
-	technologyDataSource: TechnologyDataSource;
+	activityDataSource: ActivityDataSource;
 };
 
 export type ServerContext = BaseContext & {

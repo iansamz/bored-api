@@ -3,66 +3,90 @@ schema {
 	mutation: Mutation
 }
 
-input CreateTechnology {
-	"A brief description of the Technology"
-	description: String
-	"Technology Name"
-	displayName: String!
-	"The link to the Technology's documentation"
-	url: String
-}
-
 """
-Technology mutations
+Activity object
 """
-type Mutation {
-	"Creates a new Technology"
-	createTechnology(input: CreateTechnology!): Technology!
-	"Removes a Technology"
-	deleteTechnology(id: String!): Boolean
-	"Updates a Technology"
-	updateTechnology(id: String!, input: UpdateTechnology!): Technology!
-}
-
-"""
-Technology queries
-"""
-type Query {
-	"Returns a list of Technologies"
-	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
-	"Returns a single Technology by ID"
-	technology(id: String!): Technology
-}
-
-"""
-Technology object
-"""
-type Technology {
-	"A brief description of the Technology"
-	description: String
-	"The name of the Technology"
-	displayName: String!
-	"The ID of the Technology"
+type Activity {
+	"The accesibility of the Activity"
+	accessibility: String!
+	"The name of the Activity"
+	activity: String!
+	"The ID of the Activity"
 	id: String!
-	"The link to the Technology's documentation"
-	url: String
+	"The key of the Activity"
+	key: String!
+	"The link of the Activity"
+	link: String
+	"The participants of the Activity"
+	participants: String!
+	"The price of the Activity"
+	price: String!
+	"The type of the Activity"
+	type: String!
 }
 
 """
-A page of technology items
+A page of activity items
 """
-type TechnologyCollectionPage {
+type ActivityCollectionPage {
 	"A list of records of the requested page"
-	items: [Technology]!
-	"Identifies the total count of technology records in data source"
+	items: [Activity]!
+	"Identifies the total count of activity records in data source"
 	totalCount: Int!
 }
 
-input UpdateTechnology {
-	"A brief description of the Technology"
-	description: String
-	"Technology Name"
-	displayName: String
-	"The link to the Technology's documentation"
-	url: String
+input CreateActivity {
+	"The accesibility of the Activity"
+	accessibility: String!
+	"The name of the Activity"
+	activity: String!
+	"The key of the Activity"
+	key: String!
+	"The link of the Activity"
+	link: String
+	"The participants of the Activity"
+	participants: String!
+	"The price of the Activity"
+	price: String!
+	"The type of the Activity"
+	type: String!
+}
+
+"""
+Activity mutations
+"""
+type Mutation {
+	"Creates a new Activity"
+	createActivity(input: CreateActivity!): Activity!
+	"Removes a Activity"
+	deleteActivity(id: String!): Boolean
+	"Updates a Activity"
+	updateActivity(id: String!, input: UpdateActivity!): Activity!
+}
+
+"""
+Activity queries
+"""
+type Query {
+	"Returns a list of Technologies"
+	activities(limit: Int = 5, offset: Int = 0): ActivityCollectionPage!
+	"Returns a single Activity by ID"
+	activity(id: String!): Activity
+}
+
+input UpdateActivity {
+	"The accesibility of the Activity"
+	accessibility: String!
+	"The name of the Activity"
+	activity: String!
+	"The key of the Activity"
+	key: String!
+	"The link of the Activity"
+	link: String
+	"The participants of the Activity"
+	participants: String!
+	"The price of the Activity"
+	price: String!
+	"The type of the Activity"
+	type: String!
 }
