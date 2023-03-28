@@ -18,7 +18,7 @@ export type Scalars = {
 export type Activity = {
 	__typename?: 'Activity';
 	/** The accesibility of the Activity */
-	accessibility: Scalars['String'];
+	accessibility: Scalars['Float'];
 	/** The name of the Activity */
 	activity: Scalars['String'];
 	/** The ID of the Activity */
@@ -26,11 +26,11 @@ export type Activity = {
 	/** The key of the Activity */
 	key: Scalars['String'];
 	/** The link of the Activity */
-	link?: Maybe<Scalars['String']>;
+	link: Scalars['String'];
 	/** The participants of the Activity */
-	participants: Scalars['String'];
+	participants: Scalars['Int'];
 	/** The price of the Activity */
-	price: Scalars['String'];
+	price: Scalars['Float'];
 	/** The type of the Activity */
 	type: Scalars['String'];
 };
@@ -46,17 +46,17 @@ export type ActivityCollectionPage = {
 
 export type CreateActivity = {
 	/** The accesibility of the Activity */
-	accessibility: Scalars['String'];
+	accessibility: Scalars['Float'];
 	/** The name of the Activity */
 	activity: Scalars['String'];
 	/** The key of the Activity */
 	key: Scalars['String'];
 	/** The link of the Activity */
-	link?: InputMaybe<Scalars['String']>;
+	link: Scalars['String'];
 	/** The participants of the Activity */
-	participants: Scalars['String'];
+	participants: Scalars['Int'];
 	/** The price of the Activity */
-	price: Scalars['String'];
+	price: Scalars['Float'];
 	/** The type of the Activity */
 	type: Scalars['String'];
 };
@@ -110,17 +110,17 @@ export type QueryactivityArgs = {
 
 export type UpdateActivity = {
 	/** The accesibility of the Activity */
-	accessibility: Scalars['String'];
+	accessibility: Scalars['Float'];
 	/** The name of the Activity */
 	activity: Scalars['String'];
 	/** The key of the Activity */
 	key: Scalars['String'];
 	/** The link of the Activity */
-	link?: InputMaybe<Scalars['String']>;
+	link: Scalars['String'];
 	/** The participants of the Activity */
-	participants: Scalars['String'];
+	participants: Scalars['Int'];
 	/** The price of the Activity */
-	price: Scalars['String'];
+	price: Scalars['Float'];
 	/** The type of the Activity */
 	type: Scalars['String'];
 };
@@ -213,6 +213,7 @@ export type ResolversTypes = {
 	ActivityCollectionPage: ResolverTypeWrapper<ActivityCollectionPage>;
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	CreateActivity: CreateActivity;
+	Float: ResolverTypeWrapper<Scalars['Float']>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
@@ -226,6 +227,7 @@ export type ResolversParentTypes = {
 	ActivityCollectionPage: ActivityCollectionPage;
 	Boolean: Scalars['Boolean'];
 	CreateActivity: CreateActivity;
+	Float: Scalars['Float'];
 	Int: Scalars['Int'];
 	Mutation: {};
 	Query: {};
@@ -237,13 +239,13 @@ export type ActivityResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Activity'] = ResolversParentTypes['Activity']
 > = {
-	accessibility?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	accessibility?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 	activity?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-	link?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	participants?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-	price?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	link?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	participants?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	price?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 	type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

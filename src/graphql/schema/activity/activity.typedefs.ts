@@ -12,15 +12,15 @@ export const activityTypeDefs = gql`
 		"The type of the Activity"
 		type: String!
 		"The participants of the Activity"
-		participants: String!
+		participants: Int!
 		"The price of the Activity"
-		price: String!
+		price: Float!
 		"The link of the Activity"
-		link: String
+		link: String!
 		"The key of the Activity"
 		key: String!
 		"The accesibility of the Activity"
-		accessibility: String!
+		accessibility: Float!
 	}
 
 	"""
@@ -49,15 +49,15 @@ export const activityTypeDefs = gql`
 		"The type of the Activity"
 		type: String!
 		"The participants of the Activity"
-		participants: String!
+		participants: Int!
 		"The price of the Activity"
-		price: String!
+		price: Float!
 		"The link of the Activity"
-		link: String
+		link: String!
 		"The key of the Activity"
 		key: String!
 		"The accesibility of the Activity"
-		accessibility: String!
+		accessibility: Float!
 	}
 
 	input UpdateActivity {
@@ -66,15 +66,15 @@ export const activityTypeDefs = gql`
 		"The type of the Activity"
 		type: String!
 		"The participants of the Activity"
-		participants: String!
+		participants: Int!
 		"The price of the Activity"
-		price: String!
+		price: Float!
 		"The link of the Activity"
-		link: String
+		link: String!
 		"The key of the Activity"
 		key: String!
 		"The accesibility of the Activity"
-		accessibility: String!
+		accessibility: Float!
 	}
 
 	"""

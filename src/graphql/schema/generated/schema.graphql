@@ -8,7 +8,7 @@ Activity object
 """
 type Activity {
 	"The accesibility of the Activity"
-	accessibility: String!
+	accessibility: Float!
 	"The name of the Activity"
 	activity: String!
 	"The ID of the Activity"
@@ -16,11 +16,11 @@ type Activity {
 	"The key of the Activity"
 	key: String!
 	"The link of the Activity"
-	link: String
+	link: String!
 	"The participants of the Activity"
-	participants: String!
+	participants: Int!
 	"The price of the Activity"
-	price: String!
+	price: Float!
 	"The type of the Activity"
 	type: String!
 }
@@ -37,17 +37,17 @@ type ActivityCollectionPage {
 
 input CreateActivity {
 	"The accesibility of the Activity"
-	accessibility: String!
+	accessibility: Float!
 	"The name of the Activity"
 	activity: String!
 	"The key of the Activity"
 	key: String!
 	"The link of the Activity"
-	link: String
+	link: String!
 	"The participants of the Activity"
-	participants: String!
+	participants: Int!
 	"The price of the Activity"
-	price: String!
+	price: Float!
 	"The type of the Activity"
 	type: String!
 }
@@ -76,17 +76,17 @@ type Query {
 
 input UpdateActivity {
 	"The accesibility of the Activity"
-	accessibility: String!
+	accessibility: Float!
 	"The name of the Activity"
 	activity: String!
 	"The key of the Activity"
 	key: String!
 	"The link of the Activity"
-	link: String
+	link: String!
 	"The participants of the Activity"
-	participants: String!
+	participants: Int!
 	"The price of the Activity"
-	price: String!
+	price: Float!
 	"The type of the Activity"
 	type: String!
 }

@@ -14,11 +14,11 @@ model ActivityEntity {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   activity      String
   type          String
-  participants  String
-  price         String
-  link          String?
+  participants  Int
+  price         Int
+  link          String
   key           String
-  accessibility String
+  accessibility Int
 
   @@map("activity")
 }

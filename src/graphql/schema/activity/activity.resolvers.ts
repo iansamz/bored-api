@@ -33,7 +33,7 @@ export const activityResolvers: Resolvers<ServerContext> = {
 		},
 		updateActivity: async (_parent, { id, input }, { dataSources }) => {
 			if (input.activity === null) {
-				throw new GraphQLError(`Invalid argument property value. Display Name cannot be null.`, {
+				throw new GraphQLError(`Invalid argument property value. Activity cannot be null.`, {
 					extensions: {
 						code: ApolloServerErrorCode.BAD_USER_INPUT,
 						argumentName: 'input',
