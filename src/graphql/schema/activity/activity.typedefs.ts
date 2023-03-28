@@ -87,5 +87,7 @@ export const activityTypeDefs = gql`
 		updateActivity(id: String!, input: UpdateActivity!): Activity!
 		"Removes a Activity"
 		deleteActivity(id: String!): Boolean
+		"Creates new Activities"
+		createNewBoredActivities(numActivities: Int! = 20): [Activity]!
 	}
 `;

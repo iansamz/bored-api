@@ -1,5 +1,7 @@
 import { PrismaClient, Prisma, ActivityEntity } from '@prisma/client';
 import { CacheAPIWrapper } from '../../cache';
+import { Activity } from '../schema/generated/types';
+import axios from 'axios';
 
 type ActivityEntityId = ActivityEntity['id'];
 
@@ -76,5 +78,28 @@ export class ActivityDataSource {
 			await this.cacheAPIWrapper?.invalidateCached(id);
 		}
 		return deleted;
+	}
+
+	async createNewBoredActivities(numActivities: number): Promise<ActivityEntity[]> {
+		const url = `https://www.boredapi.com/api/activity`;
+		const activities: ActivityEntity[] = [];
+
+		for (let i = 0; i < numActivities; i++) {
+			try {
+				const response = await axios.get(url);
+				const data: Prisma.ActivityEntityCreateInput = response.data;
+
+				const entity = await this.prismaClient.activityEntity.create({
+					data,
+				});
+
+				this.cacheAPIWrapper?.cache(entity, 'id');
+
+				activities.push(entity);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		return activities;
 	}
 }

@@ -66,6 +66,8 @@ export type Mutation = {
 	__typename?: 'Mutation';
 	/** Creates a new Activity */
 	createActivity: Activity;
+	/** Creates new Activities */
+	createNewBoredActivities: Array<Maybe<Activity>>;
 	/** Removes a Activity */
 	deleteActivity?: Maybe<Scalars['Boolean']>;
 	/** Updates a Activity */
@@ -75,6 +77,11 @@ export type Mutation = {
 /** Activity mutations */
 export type MutationcreateActivityArgs = {
 	input: CreateActivity;
+};
+
+/** Activity mutations */
+export type MutationcreateNewBoredActivitiesArgs = {
+	numActivities?: Scalars['Int'];
 };
 
 /** Activity mutations */
@@ -268,6 +275,12 @@ export type MutationResolvers<
 		ParentType,
 		ContextType,
 		RequireFields<MutationcreateActivityArgs, 'input'>
+	>;
+	createNewBoredActivities?: Resolver<
+		Array<Maybe<ResolversTypes['Activity']>>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationcreateNewBoredActivitiesArgs, 'numActivities'>
 	>;
 	deleteActivity?: Resolver<
 		Maybe<ResolversTypes['Boolean']>,

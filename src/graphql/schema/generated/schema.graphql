@@ -58,6 +58,8 @@ Activity mutations
 type Mutation {
 	"Creates a new Activity"
 	createActivity(input: CreateActivity!): Activity!
+	"Creates new Activities"
+	createNewBoredActivities(numActivities: Int! = 20): [Activity]!
 	"Removes a Activity"
 	deleteActivity(id: String!): Boolean
 	"Updates a Activity"

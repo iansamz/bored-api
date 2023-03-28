@@ -35,5 +35,9 @@ export const activityResolvers: Resolvers<ServerContext> = {
 			const entity = await dataSources.activityDataSource.deleteActivity(id);
 			return Boolean(entity);
 		},
+		createNewBoredActivities: async (_parent, { numActivities }, { dataSources }) => {
+			const entities = await dataSources.activityDataSource.createNewBoredActivities(numActivities);
+			return entities.map(mapActivity);
+		},
 	},
 };
