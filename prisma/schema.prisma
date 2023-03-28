@@ -15,10 +15,10 @@ model ActivityEntity {
   activity      String
   type          String
   participants  Int
-  price         Int
+  price         Float
   link          String
   key           String
-  accessibility Int
+  accessibility Float
 
   @@map("activity")
 }
