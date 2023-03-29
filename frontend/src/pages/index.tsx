@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import {
   Heading,
   Box,
@@ -8,27 +7,64 @@ import {
   UnorderedList,
   ListItem,
   Flex,
+  Spinner,
+  Text,
 } from "@chakra-ui/react";
 
-type Routes = {
-  text: string;
-  route: string;
-};
+import { gql } from "@apollo/client";
+import client from "../../apollo-client";
+import { useEffect, useState } from "react";
+import { CreateActivitiesButton } from "../components/CreateActivitiesButton";
+import { Activity } from "../types/Activitity";
+import { SelectType } from "../components/SelectType/SelectType";
 
 const Home: NextPage = () => {
-  const routesArr: Routes[] = [
-    { text: "See Counter example component", route: "counter-example" },
-    { text: "See Fetch example component", route: "fetch-example" },
-  ];
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [type, setType] = useState<string>();
+  const [totalActivities, setTotalActivities] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const fetchActivities = async () => {
+    const { data } = await client.query({
+      query: gql`
+        query Activities($query: GetActivities, $limit: Int) {
+          activities(query: $query, limit: $limit) {
+            items {
+              id
+              activity
+              type
+              participants
+              price
+              link
+              key
+              accessibility
+            }
+            totalCount
+          }
+        }
+      `,
+      variables: {
+        query: {
+          type,
+        },
+        limit: 10,
+        offset: null,
+      },
+    });
+    setTotalActivities(data.activities.totalCount);
+    setActivities(data.activities.items);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchActivities();
+  }, [type]);
 
   return (
-    <div>
+    <Box my="10">
       <Head>
-        <title>NextJS 12 and Chakra UI starter kit</title>
-        <meta
-          name="description"
-          content="This is a starter kit for NextJS 12 and Chakra UI"
-        />
+        <title>Bored API</title>
+        <meta name="description" content="Bored API" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box>
@@ -42,31 +78,54 @@ const Home: NextPage = () => {
             p={4}
             bg="#2464ec"
           >
-            NextJS 12 and Chakra UI Starter Kit
+            BORED API
           </Heading>
         </Center>
-        <Center>
-          <UnorderedList mt={8} listStyleType="none">
-            <Flex
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-            >
-              {routesArr.map(({ route, text }) => (
-                <ListItem
-                  key={route}
-                  fontSize="2xl"
-                  textDecoration="underline"
-                  color="#376fec"
-                >
-                  <Link href={route}>{text}</Link>
-                </ListItem>
-              ))}
-            </Flex>
-          </UnorderedList>
-        </Center>
+        <Flex
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          gap="8"
+          mt="8"
+        >
+          <Box mt="4">
+            <SelectType type={type} setType={setType} />
+          </Box>
+          {!isLoading ? (
+            <Text>
+              Here are {activities.length} activities of total {totalActivities}{" "}
+            </Text>
+          ) : (
+            ""
+          )}
+          <Flex
+            flexDirection="column"
+            justifyContent="flex-start"
+            alignItems="self-start"
+            gap="4"
+          >
+            {isLoading ? (
+              <Spinner size="xl" color="blue" />
+            ) : (
+              activities.map((activity) => (
+                <Box key={activity.id} mt={8}>
+                  <Text fontSize="lg">Key: {activity.key}</Text>
+                  <UnorderedList>
+                    <ListItem>Activity: {activity.activity}</ListItem>
+                    <ListItem>Type: {activity.type}</ListItem>
+                    <ListItem>Participants: {activity.participants}</ListItem>
+                    <ListItem>Price: {activity.price}</ListItem>
+                    <ListItem>Link: {activity.link}</ListItem>
+                    <ListItem>Accesibility: {activity.accessibility}</ListItem>
+                  </UnorderedList>
+                </Box>
+              ))
+            )}
+          </Flex>
+          <CreateActivitiesButton />
+        </Flex>
       </Box>
-    </div>
+    </Box>
   );
 };
 
