@@ -30,35 +30,6 @@ export const CreateActivitiesButton = () => {
       },
     });
 
-    // const { data } = await client.query({
-    //   query: gql`
-    //     query Activities($query: GetActivities, $limit: Int) {
-    //       activities(query: $query, limit: $limit) {
-    //         items {
-    //           id
-    //           activity
-    //           type
-    //           participants
-    //           price
-    //           link
-    //           key
-    //           accessibility
-    //         }
-    //         totalCount
-    //       }
-    //     }
-    //   `,
-    //   variables: {
-    //     query: {
-    //       type: "",
-    //     },
-    //     limit: 10,
-    //     offset: null,
-    //   },
-    // });
-
-    console.log(data);
-
     setIsLoading(false);
   };
 
